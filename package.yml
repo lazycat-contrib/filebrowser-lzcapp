@@ -1,0 +1,15 @@
+package: community.lazycat.app.filebrowser
+version: 2.0.1
+name: FileBrowser Quantum
+description: "Web File Browser with media previews, search and WebDAV"
+min_os_version: 1.5.0
+author: gtsteffaniak
+license: Apache-2.0
+homepage: https://github.com/gtsteffaniak/filebrowser
+locales:
+  zh:
+    name: "FileBrowser Quantum"
+    description: "Web 文件浏览器（Quantum 版）：多源管理、富媒体预览（视频/Office/3D）、索引搜索、WebDAV、多用户与分享链接"
+  en:
+    name: "FileBrowser Quantum"
+    description: "Web File Browser with media previews, indexed search and WebDAV"

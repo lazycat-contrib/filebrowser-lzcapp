@@ -1,0 +1,32 @@
+application:
+  subdomain: filebrowser
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://filebrowser:80/
+
+services:
+  filebrowser:
+    # upstream: ghcr.io/gtsteffaniak/filebrowser:2.0.1-stable
+    image: ghcr.1ms.run/gtsteffaniak/filebrowser:2.0.1-stable
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      # 数据库 + config.yaml（镜像默认路径 /home/filebrowser/data）
+      - /lzcapp/var/filebrowser:/home/filebrowser/data
+      # 懒猫用户文件（只读示例，可在 config.yaml 加更多源）
+      - /lzcapp/run/mnt/home:/srv/home
+      - /lzcapp/run/mnt/media:/srv/media:ro
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:80/health
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s

@@ -1,0 +1,42 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/filebrowser.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: filebrowser
+
+build:
+  run_buildscript: false
+
+images:
+  # tag 族：N.N.N-stable（正式）/ N.N.N-beta / N.N.N-dev；只跟 stable
+  - id: filebrowser
+    target: service
+    service: filebrowser
+    source: ghcr.io/gtsteffaniak/filebrowser
+    channel: stable
+    sort: semver
+    tag_regex: '^\d+\.\d+\.\d+-stable$'
+    version_regex: '^(?P<version>\d+\.\d+\.\d+)-stable$'
+    version_template: '{version}'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: FileBrowser Quantum
+    summary: "Web 文件浏览器（Quantum 版）"
