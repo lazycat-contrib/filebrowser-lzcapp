@@ -7,11 +7,10 @@ application:
   upstreams:
     - location: /
       backend: http://filebrowser:80/
-
 services:
   filebrowser:
-    # upstream: ghcr.io/gtsteffaniak/filebrowser:2.0.1-stable
-    image: ghcr.1ms.run/gtsteffaniak/filebrowser:2.0.1-stable
+    # upstream: ghcr.io/gtsteffaniak/filebrowser:2.0.2-stable
+    image: ghcr.1ms.run/gtsteffaniak/filebrowser:2.0.2-stable
     environment:
       - TZ=Asia/Shanghai
     binds:

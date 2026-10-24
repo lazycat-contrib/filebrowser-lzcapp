@@ -1,5 +1,5 @@
 package: community.lazycat.app.filebrowser
-version: 2.0.1
+version: 2.0.2
 name: FileBrowser Quantum
 description: "Web File Browser with media previews, search and WebDAV"
 min_os_version: 1.5.0
